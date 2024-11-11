@@ -220,10 +220,11 @@
 
 .project-actions {
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     font-size: 1.0rem;
-    gap: 15px;
+    gap: 1rem;
     color: #666;
+    margin-left: 60%;
 }
 
 /* Side Content Styles */
