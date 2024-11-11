@@ -160,13 +160,13 @@
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #ffcc00;
+    border: 2px solid #165578;
 }
 
 .header-top .avatar {
     width: 40px;
     height: 40px;
-    border: 2px solid #ffcc00;
+    border: 2px solid #155773;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -174,7 +174,7 @@
 .header-down .avatar {
     width: 50px;
     height: 50px;
-    border: 2px solid #ffcc00;
+    border: 2px solid #285c97;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -202,7 +202,7 @@
     width: 340px;
     padding: 20px;
     border-radius: 8px;
-    border-left: 8px solid #f0b429;
+    border-left: 8px solid #105174;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     /* margin-bottom: 10px; */
 }
