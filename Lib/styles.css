@@ -6,8 +6,8 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fc;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -18,9 +18,9 @@ body {
 /* Form Styling */
 form {
     background-color: #ffffff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
     margin-bottom: 30px;
     width: 100%;
     max-width: 500px;
@@ -33,10 +33,10 @@ form input[type="text"],
 form input[type="number"],
 form button {
     font-size: 16px;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    transition: all 0.3s;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #d1d9e6;
+    transition: all 0.3s ease;
 }
 
 form input[type="text"],
@@ -47,18 +47,18 @@ form input[type="number"] {
 
 form input[type="text"]:focus,
 form input[type="number"]:focus {
-    border-color: #0056d2;
+    border-color: #007bff;
     outline: none;
-    box-shadow: 0px 0px 8px rgba(0, 86, 210, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
 }
 
 form label {
     font-weight: 500;
-    color: #555;
+    color: #5a5a5a;
 }
 
 form button {
-    background-color: #0056d2;
+    background-color: #007bff;
     color: #ffffff;
     font-weight: bold;
     cursor: pointer;
@@ -67,7 +67,7 @@ form button {
 }
 
 form button:hover {
-    background-color: #0041a1;
+    background-color: #000000;
 }
 
 /* Library Container Styling */
@@ -82,57 +82,58 @@ form button:hover {
 /* Book Card Styling */
 .book-card {
     background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease, transform 0.2s;
     position: relative;
 }
 
 .book-card:hover {
-    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .book-card h3 {
-    font-size: 22px;
+    font-size: 24px;
     color: #333333;
     margin-bottom: 10px;
 }
 
 .book-card p {
     font-size: 16px;
-    color: #555555;
+    color: #666666;
     margin-bottom: 8px;
 }
 
 .book-card p span {
-    font-weight: bold;
+    font-weight: 600;
     color: #333333;
 }
 
 /* Buttons Inside Book Cards */
 .book-card button {
-    background-color: #d9534f;
+    background-color: #dc3545;
     color: #ffffff;
     border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-right: 10px;
 }
 
 .book-card button:hover {
-    background-color: #c12e2a;
+    background-color: #c82333;
 }
 
 .book-card button:nth-child(2) {
-    background-color: #5cb85c;
+    background-color: #28a745;
 }
 
 .book-card button:nth-child(2):hover {
-    background-color: #4cae4c;
+    background-color: #218838;
 }
 
 /* Responsiveness */
