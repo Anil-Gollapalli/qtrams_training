@@ -6,15 +6,25 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #0a0909;
+    background-color: #9fd986;
+}
+
+body {
+    position: relative;
+    z-index: 1;
+    background-image: url('https://images.unsplash.com/photo-1519750783826-e2420f4d687f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
     text-align: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 /* Player form styles */
