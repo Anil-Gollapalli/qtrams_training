@@ -15,8 +15,48 @@ body {
     padding: 20px;
 }
 
-/* Form Styling */
-form {
+/* Header container with border and shadow for title and button */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    border: 2px solid #007bff; /* Border color */
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+/* Library Title */
+.library-title {
+    font-size: 36px;
+    color: #007bff;
+    margin: 0; /* Remove extra margin */
+}
+
+/* Button to open form */
+.open-form-btn {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #0056b3; /* Button border color */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.open-form-btn:hover {
+    background-color: #0056b3;
+    border-color: #003a70;
+}
+
+/* Form Container Styling */
+.form-container {
+    display: none;
     background-color: #ffffff;
     padding: 30px;
     border-radius: 12px;
@@ -24,11 +64,9 @@ form {
     margin-bottom: 30px;
     width: 100%;
     max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 }
 
+/* Form Inputs */
 form input[type="text"],
 form input[type="number"],
 form button {
@@ -36,13 +74,8 @@ form button {
     padding: 14px;
     border-radius: 8px;
     border: 1px solid #d1d9e6;
-    transition: all 0.3s ease;
-}
-
-form input[type="text"],
-form input[type="number"] {
-    width: 100%;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 form input[type="text"]:focus,
@@ -52,17 +85,11 @@ form input[type="number"]:focus {
     box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
 }
 
-form label {
-    font-weight: 500;
-    color: #5a5a5a;
-}
-
 form button {
     background-color: #007bff;
     color: #ffffff;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     border: none;
 }
 
@@ -70,23 +97,35 @@ form button:hover {
     background-color: #000000;
 }
 
-/* Library Container Styling */
+/* Library Container Styling for Horizontal Scroll */
 #library-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 20px 0;
     gap: 20px;
     width: 100%;
-    max-width: 600px;
+    max-width: 100%;
 }
 
-/* Book Card Styling */
+/* Book Card Styling with Distinct Colors */
 .book-card {
     background-color: #ffffff;
     border-radius: 12px;
     padding: 25px;
+    min-width: 200px;
+    max-width: 200px;
     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.3s ease, transform 0.2s;
     position: relative;
+}
+
+.book-card:nth-child(odd) {
+    background-color: #f1c40f; /* Yellow */
+}
+
+.book-card:nth-child(even) {
+    background-color: #2ecc71; /* Green */
 }
 
 .book-card:hover {
@@ -103,41 +142,15 @@ form button:hover {
 .book-card p {
     font-size: 16px;
     color: #666666;
-    margin-bottom: 8px;
-}
-
-.book-card p span {
-    font-weight: 600;
-    color: #333333;
-}
-
-/* Buttons Inside Book Cards */
-.book-card button {
-    background-color: #dc3545;
-    color: #ffffff;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-}
-
-.book-card button:hover {
-    background-color: #c82333;
-}
-
-.book-card button:nth-child(2) {
-    background-color: #28a745;
-}
-
-.book-card button:nth-child(2):hover {
-    background-color: #218838;
 }
 
 /* Responsiveness */
 @media (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     form, #library-container {
         width: 90%;
     }

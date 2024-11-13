@@ -69,15 +69,22 @@ function handleNewBookSubmit(event) {
 
     addBookToLibrary(title, author, pages, isRead);
 
-    // Reset form
+    // Reset form and hide it after submission
     event.target.reset();
+    document.getElementById('form-container').style.display = 'none';
 }
 
-// Event listener to display books when content loads
+// Event listener to display books and manage form visibility
 document.addEventListener('DOMContentLoaded', () => {
     displayBooks();
 
-    // Add form submit event listener
+    // Toggle form visibility
+    const openFormBtn = document.getElementById('open-form-btn');
+    const formContainer = document.getElementById('form-container');
+    openFormBtn.addEventListener('click', () => {
+        formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+    });
+
     const newBookForm = document.getElementById('new-book-form');
     if (newBookForm) {
         newBookForm.addEventListener('submit', handleNewBookSubmit);
