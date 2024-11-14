@@ -8,7 +8,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #74b9ff, #81ecec);
+    background: linear-gradient(135deg, #8bbbec, #9aecec);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,7 +19,7 @@ body {
 #header {
     margin: 20px 0;
     text-align: center;
-    color: #ffffff;
+    color: #c96e19;
     font-size: 2.5rem;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -35,7 +35,7 @@ body {
 .card {
     width: 250px;
     padding: 20px;
-    background: #ffffff;
+    background: #0a0000;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -49,7 +49,7 @@ body {
 
 .card button {
     padding: 10px 20px;
-    background: #0984e3;
+    background: #e34e09;
     border: none;
     border-radius: 5px;
     color: #ffffff;
