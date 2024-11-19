@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compact Sidebar with Header, Footer, and Main Content Layout</title>
+  <!-- Link to Google Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    /* Basic reset for box sizing */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Container for the whole layout */
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+      background-color: #1f456a; /* Dark blue */
+      color: white;
+      width: 20%;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Sidebar brand styling */
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .sidebar-brand span {
+      margin-right: 0.5rem;
+    }
+
+    /* Navigation links styling */
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      color: #bbb;
+      transition: background-color 0.3s;
+    }
+
+    .nav-item:hover {
+      background-color: #34495E; /* Slightly lighter blue for hover */
+      color: white;
+    }
+
+    .nav-item span {
+      margin-right: 0.5rem;
+    }
+
+    /* Main content area with sidebar and content body */
+    .content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    /* Header styling */
+    .header {
+      background-color: #f8f8f8; /* Lighter blue */
+      color: rgb(0, 0, 0);
+      padding: 0.5rem;
+    }
+
+    /* Header Top Styling */
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #2C3E50;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: #2C3E50;
+      padding: 0.3rem;
+      border-radius: 5px;
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: white;
+      margin-left: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .header-top-right {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin: 0 0.3rem;
+    }
+
+    /* Header Down Styling */
+    .header-down {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.3rem;
+    }
+
+    .greeting-text {
+      display: flex;
+      align-items: center;
+    }
+
+    .greeting-text-top {
+      margin-left: 0.5rem;
+      color: rgb(15, 15, 15);
+      font-size: 0.9rem;
+    }
+
+    .header-buttons button {
+      margin: 0 0.3rem;
+      padding: 0.3rem 0.8rem;
+      border: none;
+      background-color: #34495E;
+      color: rgb(0, 0, 0);
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    /* Content body styling with Left and Right sections */
+    .body {
+      display: flex;
+      flex: 1;
+      padding: 1rem;
+      background-color: #ECF0F1; /* Light gray for body background */
+    }
+
+    .left-section, .right-section {
+      background-color: #BDC3C7; /* Light gray for sections */
+      color: #333;
+      flex: 1;
+      padding: 1rem;
+      margin: 0.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Section Title Styling */
+    .section-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #111112; /* Lighter blue */
+    }
+
+    /* Announcements and Trending Containers */
+    .announcements, .trending {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+      flex: 1;
+      overflow: hidden;
+    }
+    .trending {
+      background-color: white;
+      padding: 1rem 1rem 0.5rem 1rem; /* Reduced bottom padding to 0.5rem */
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+    }
+
+    .announcement-item, .trending-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .announcement-item h4, .trending-item span {
+      font-size: 1rem;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+    }
+
+    .announcement-item p, .trending-item p {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    /* Trending Item Style */
+    .trending-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .trending-item img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    /* Projects section styling */
+    .projects {
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+      background-color: white;
+      border-radius: 5px;
+      padding: 0.8rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h3 {
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+      color: #090909; /* Lighter blue for project titles */
+    }
+
+    .project-card p {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-actions {
+      display: flex;
+      justify-content: space-around;
+      color: #888;
+      font-size: 1.2rem;
+      margin-top: auto;
+    }
+
+    /* Footer styling */
+    .footer {
+      background-color: #3498DB;
+      color: white;
+      padding: 0.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Sidebar Section -->
+    <aside class="sidebar">
+      <!-- Sidebar Brand -->
+      <div class="sidebar-brand">
+        <span class="material-icons">dashboard</span>
+        <span>Dashboard</span>
+      </div>
+      
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <div class="nav-item"><span class="material-icons">home</span>Home</div>
+        <div class="nav-item"><span class="material-icons">person</span>Profile</div>
+        <div class="nav-item"><span class="material-icons">message</span>Messages</div>
+        <div class="nav-item"><span class="material-icons">history</span>History</div>
+        <div class="nav-item"><span class="material-icons">task</span>Tasks</div>
+        <div class="nav-item"><span class="material-icons">groups</span>Communities</div><br><br>
+        <div class="nav-item"><span class="material-icons">settings</span>Settings</div>
+        <div class="nav-item"><span class="material-icons">support</span>Support</div>
+        <div class="nav-item"><span class="material-icons">privacy_tip</span>Privacy</div>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area with Header, Body, and Footer -->
+    <div class="content">
+      <!-- Compact Header Section -->
+      <header class="header">
+        <!-- First Line (Header Top) -->
+        <div class="header-top">
+          <div class="search-bar">
+            <span class="material-icons">search</span>
+            <input type="search" placeholder="Search...">
+          </div>
+          <div class="header-top-right">
+            <span class="material-icons">notifications</span>
+            <img src="https://i.pravatar.cc/30?img=5" alt="User Avatar" class="avatar">
+            <span>Morgan Oakley</span>
+          </div>
+        </div>
+        
+        <!-- Second Line (Header Down) -->
+        <div class="header-down">
+          <div class="greeting-text">
+            <img src="https://i.pravatar.cc/30?img=5" alt="Avatar for Morgan Oakley" class="avatar">
+            <div class="greeting-text-top">
+              <p>Hi there,</p>
+              <h2 style="margin: 0; font-size: 1rem;">Morgan Oakley (@morgan)</h2>
+            </div>
+          </div>
+          <div class="header-buttons">
+            <button>New</button>
+            <button>Upload</button>
+            <button>Share</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Body Section with Left and Right Divisions -->
+      <div class="body">
+        <!-- Left Section with Projects -->
+        <div class="left-section">
+          <div class="section-title">Your Projects</div>
+          <div class="projects">
+            <div class="project-card">
+              <h3>Super Cool Project</h3>
+              <p>Sed tempus ut lacus ut scelerisque. Suspendisse sollicitudin nibh erat, id facilisis felis accumsan nec.</p>
+              <div class="project-actions">
+                <span class="material-icons">star_border</span>
+                <span class="material-icons">visibility</span>
+                <span class="material-icons">share</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h3>Less Cool Project</h3>
+              <p>Nullam condimentum ipsum ut lectus vehicula consectetur. Quisque sed dolor tincidunt, consectetur sapien et, facilisis dolor.</p>
+              <div class="project-actions">
+                <span class="material-icons">star_border</span>
+                <span class="material-icons">visibility</span>
+                <span class="material-icons">share</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h3>Impossible App</h3>
+              <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id.</p>
+              <div class="project-actions">
+                <span class="material-icons">star_border</span>
+                <span class="material-icons">visibility</span>
+                <span class="material-icons">share</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h3>Easy Peasy App</h3>
+              <p>Etiam cursus eros ac efficitur fringilla. Vestibulum dignissim urna eget accumsan aliquam.</p>
+              <div class="project-actions">
+                <span class="material-icons">star_border</span>
+                <span class="material-icons">visibility</span>
+                <span class="material-icons">share</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h3>Ad Blocker</h3>
+              <p>Quisque eget rutrum nisl. Nam augue justo, cursus vitae metus vel, pharetra hendrerit felis.</p>
+              <div class="project-actions">
+                <span class="material-icons">star_border</span>
+                <span class="material-icons">visibility</span>
+                <span class="material-icons">share</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h3>Money Maker</h3>
+              <p>Praesent convallis, libero quis congue elementum, nunc ante faucibus sapien, ac scelerisque tortor purus sit amet ex.</p>
+              <div class="project-actions">
+                <span class="material-icons">star_border</span>
+                <span class="material-icons">visibility</span>
+                <span class="material-icons">share</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Section with Announcements and Trending Content -->
+        <div class="right-section">
+          <div class="section-title">Announcements</div>
+          <div class="announcements">
+            <div class="announcement-item">
+              <h4>Site Maintenance</h4>
+              <p>Vestibulum condimentum tellus lacus, in accumsan elit maximus ac. Donec hendrerit sodales congue...</p>
+            </div>
+            <hr>
+            <div class="announcement-item">
+              <h4>Community Share Day</h4>
+              <p>Nam vel lectus tincidunt, rutrum nulla eu, ornare libero. Aliquam dictum accumsan porttitor...</p>
+            </div>
+            <hr>
+            <div class="announcement-item">
+              <h4>Updated Privacy Policy</h4>
+              <p>Phasellus efficitur nisi eget elit consectetur, eget condimentum ante auctor. Cras fringilla sagittis sem in mattis...</p>
+            </div>
+          </div>
+          <div class="section-title">Trending</div>
+          <div class="trending">
+            <div class="trending-item">
+              <img src="https://i.pravatar.cc/40?img=1" alt="Avatar for Tegan">
+              <div>
+                <span>@tegan</span>
+                <p>World Peace Builder</p>
+              </div>
+            </div>
+            <div class="trending-item">
+              <img src="https://i.pravatar.cc/40?img=2" alt="Avatar for Morgan">
+              <div>
+                <span>@morgan</span>
+                <p>Super Cool Project</p>
+              </div>
+            </div>
+            <div class="trending-item">
+              <img src="https://i.pravatar.cc/40?img=3" alt="Avatar for Kendall">
+              <div>
+                <span>@kendall</span>
+                <p>Life Changing App</p>
+              </div>
+            </div>
+            <div class="trending-item">
+              <img src="https://i.pravatar.cc/40?img=4" alt="Avatar for Alex">
+              <div>
+                <span>@alex</span>
+                <p>No Traffic Maker</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Section -->
+      <footer class="footer">
+        Footer
+      </footer>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="tic-tac-toe.css">
+</head>
+<body>
+    <div class="container">
+        <div class="player-form" id="playerForm">
+            <h2>Enter Player Names</h2>
+            <input type="text" id="player1" placeholder="Player 1 Name (X)">
+            <input type="text" id="player2" placeholder="Player 2 Name (O)">
+            <button id="startGame">Start Game</button>
+        </div>
+
+        <div class="game-container" id="gameContainer" style="display: none;">
+            <h2 id="status">Player X's Turn</h2>
+            <div class="game-board" id="gameBoard">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+            <div class="probabilities">
+                <p id="xWinProb">Player X Win %: 0.00</p>
+                <p id="oWinProb">Player O Win %: 0.00</p>
+                <p id="drawProb">Draw %: 0.00</p>
+            </div>
+            <button id="restartGame">Restart Game</button>
+            <button id="newGame">New Game</button>
+        </div>
+    </div>
+    <script src="tic-tac-toe.js"></script>
+</body>
+</html>
