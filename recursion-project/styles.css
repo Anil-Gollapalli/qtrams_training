@@ -1,0 +1,124 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Main Container */
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    color: #2c3e50;  /* Darker shade for heading */
+    font-weight: 700;
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ecf0f1;  /* Lighter border for section */
+}
+
+/* Input Fields */
+input[type="number"],
+input[type="text"] {
+    padding: 14px;
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 2px solid #bdc3c7;  /* Soft grey border */
+    font-size: 1.1em;
+    background-color: #f8f8f8;  /* Soft light background */
+    box-sizing: border-box;
+}
+
+/* Focus Effect for Inputs */
+input[type="number"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db;  /* Blue border on focus */
+    background-color: #e6f7ff;
+}
+
+/* Button Styles */
+button {
+    padding: 14px 30px;
+    background-color: #3498db;  /* Soft blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #2980b9;  /* Darker blue on hover */
+    transform: scale(1.05);
+}
+
+/* Output Result Styles */
+#fibResult, #mergeSortResult {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    padding: 18px;
+    background-color: #ecf0f1;  /* Light grey background */
+    border-radius: 8px;
+    border: 2px solid #bdc3c7;  /* Soft border color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Output Result Heading */
+#fibResult h3, #mergeSortResult h3 {
+    font-size: 1.3em;
+    color: #3498db;  /* Matching blue for output headings */
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    button {
+        font-size: 1em;
+    }
+}
