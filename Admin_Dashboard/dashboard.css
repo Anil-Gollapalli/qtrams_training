@@ -14,7 +14,6 @@
 
 body{
     background-color: black;
-    /* overflow:hidden; */
 }
 
 .mainclass{
@@ -63,14 +62,12 @@ body{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: space-between;
     gap: 20px;
 }
 
 .header-top {
     display: flex;
-    /* align-items: center; */
     gap: 15px;
     justify-content: space-between;
 }
@@ -88,21 +85,17 @@ body{
 
     align-items: center;
     justify-content: center;
-    /* padding: auto; */
-    /* gap: 10px; */
 }
 
 .greeting-text p {
     font-size: 0.65rem;
     color: #000000;
     font-weight: bold;
-    /* margin: 0; */
 }
 
 .greeting-text h2 {
     font-size: 1.1rem;
     color: #000000;
-    /* margin: 0; */
     font-weight: bold;
 }
 
@@ -111,7 +104,6 @@ body{
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
-    /* flex: 1; */
     width: 600px;
 }
 
@@ -138,12 +130,10 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* justify-content: flex-end; */
     gap: 15px;
 }
 
 .header-down button {
-    /* padding: 8px 18px; */
     width: 90px;
     height: 30px;
     border: none;
@@ -153,7 +143,6 @@ body{
     cursor: pointer;
     font-size: 0.9rem;
     margin-left: 5px;
-    /* justify-content: flex-end; */
 }
 
 .header-buttons {
@@ -192,9 +181,7 @@ body{
 .main-content {
     height: 100%;
     background-color: #f3f4f6;
-    /* padding: 20px;  */
     display: flex;
-    /* gap: 20px; */
 }
 
 .projectTitle{
@@ -208,24 +195,18 @@ body{
     width: 100%;
     margin-top: 20px;
     display: flex;
-    /* justify-content: flex-end; */
-    /* flex-direction: column; */
     flex-wrap: wrap;
     row-gap: 20px;
     column-gap: 20px;
-    /* padding: 20px; */
 }
 
 .project-card {
     background-color: white;
-    /* height: 95%; */
-    /* width: 340px; */
     width: 45%;
     padding: 20px;
     border-radius: 8px;
     border-left: 8px solid #105174;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* margin-bottom: 10px; */
 }
 
 .project-card h3 {
@@ -241,7 +222,6 @@ body{
 
 .project-actions {
     display: flex;
-    /* justify-content: flex-end; */
     font-size: 1.0rem;
     gap: 1rem;
     color: #666;
@@ -253,20 +233,17 @@ body{
     width: 35%;    
     display: flex;
     flex-direction: column;
-    /* gap: 10px; */
     padding: 20px;
     row-gap: 20px;
 }
 
 .announcementTitle{
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     gap: 20px
 }
 
 .trendingTitle{
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     gap: 20px
@@ -288,7 +265,6 @@ body{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
     padding-bottom: 5px;
-    /* margin-top: -10px; */
 }
 
 .announcement-item, .trending-item {
@@ -310,6 +286,5 @@ body{
     display: flex;
     align-items:start;
     gap: 10px;
-    /* padding-bottom: -40%; */
 }
  

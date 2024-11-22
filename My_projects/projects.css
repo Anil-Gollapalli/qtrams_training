@@ -8,20 +8,27 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #8bbbec, #9aecec);
+    background: linear-gradient(135deg, #8bbbec, #111111);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; 
     min-height: 100vh;
+    padding: 20px; 
 }
 
 #header {
-    margin: 20px 0;
+    margin: 20px 0 40px; 
     text-align: center;
     color: #c96e19;
     font-size: 2.5rem;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    background: linear-gradient(135deg, #000000, #9aecec); 
+    width: 100%; 
+    padding: 10px 0; 
+    z-index: 10;
 }
 
 .container {
@@ -30,6 +37,8 @@ body {
     gap: 20px;
     justify-content: center;
     padding: 20px;
+    width: 100%; 
+    max-width: 1200px; 
 }
 
 .card {
@@ -71,5 +80,13 @@ body {
     .container {
         flex-direction: column;
         align-items: center;
+    }
+
+    #header {
+        font-size: 2rem; 
+    }
+
+    .card {
+        width: 90%; 
     }
 }
