@@ -1,4 +1,4 @@
-// Game board module
+// Gameboard module
 const Gameboard = (() => {
     let board = Array(9).fill('');
 
@@ -110,6 +110,7 @@ const GameController = (() => {
             return false;
         }
 
+        // Check for a winner or tie after the move has been made
         if (checkWin()) {
             gameOver = true;
             return 'win';
@@ -153,6 +154,7 @@ const DisplayController = (() => {
     const updateStatus = result => {
         if (result === 'win') {
             alert(`${GameController.getCurrentPlayer().name} Wins!`);
+            status.textContent = `${GameController.getCurrentPlayer().name} Wins!`;
         } else if (result === 'tie') {
             status.textContent = "It's a Tie!";
         } else if (!GameController.isGameOver()) {
