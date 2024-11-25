@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinkedList Visualizer</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List Visualizer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>LinkedList Visualizer</h1>
-    <div id="list-container" class="list-output">Loading...</div>
-  </div>
-  <script type="module" src="main.js"></script>
+
+    <div class="container">
+        <h1>LinkedList Visualizer</h1>
+
+        <div class="controls">
+            <input type="text" id="inputField" placeholder="Enter value">
+            <button id="appendBtn">Append</button>
+            <button id="prependBtn">Prepend</button>
+            <button id="popBtn">Pop</button>
+            <button id="findBtn">Find</button>
+            <button id="insertBtn">Insert at Index</button>
+            <button id="removeBtn">Remove at Index</button>
+        </div>
+
+        <div id="result">( LinkedList is empty )</div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
