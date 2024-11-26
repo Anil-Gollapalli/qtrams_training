@@ -65,16 +65,16 @@ body {
 }
 
 .dropdown-btn {
-    padding: 10px 15px; /* Slightly reduced padding */
+    padding: 10px 15px; 
     background: #e34e09;
     border: none;
     border-radius: 5px;
     color: white;
-    font-size: 0.9rem; /* Reduced font size */
+    font-size: 0.9rem; 
     cursor: pointer;
     width: 100%;
     transition: background 0.3s ease, transform 0.3s ease;
-    margin-bottom: 5px; /* Reduced margin for tighter spacing */
+    margin-bottom: 5px; 
 }
 
 .dropdown-btn:hover {
@@ -85,20 +85,20 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 35px; /* Space to position it below the button */
+    top: 15px; 
     left: 0;
     background-color: #333333;
-    width: 100%;
+    width: 70%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1;
     border-radius: 5px;
     text-align: left;
-    padding: 5px 0; /* Reduced padding to make dropdown smaller */
+    padding: 5px 0; 
 }
 
 .dropdown-content a {
     color: white;
-    padding: 8px 15px; /* Slightly smaller padding */
+    padding: 5px 8px; 
     text-decoration: none;
     display: block;
     transition: background 0.2s ease;
@@ -127,6 +127,6 @@ body {
     }
 
     .dropdown-btn {
-        font-size: 1.1rem; /* Make buttons slightly bigger on small screens */
+        font-size: 1.1rem; 
     }
 }
