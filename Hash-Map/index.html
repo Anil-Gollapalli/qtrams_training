@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HashMap Example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>HashMap</h1>
+        <div class="form">
+            <input type="text" id="keyInput" placeholder="Enter key" required>
+            <input type="text" id="valueInput" placeholder="Enter value" required>
+            <button onclick="addKeyValuePair()">Add Key-Value Pair</button>
+        </div>
+        <div class="output-btns">
+            <button onclick="showMapState()">Show HashMap State</button>
+            <button onclick="showKeys()">Show Keys</button>
+            <button onclick="showValues()">Show Values</button>
+            <button onclick="showEntries()">Show Entries</button>
+        </div>
+        <pre id="output"></pre>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
