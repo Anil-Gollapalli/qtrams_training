@@ -3,24 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HashMap Example</title>
+    <title>HashMap</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>HashMap</h1>
-        <div class="form">
-            <input type="text" id="keyInput" placeholder="Enter key" required>
-            <input type="text" id="valueInput" placeholder="Enter value" required>
-            <button onclick="addKeyValuePair()">Add Key-Value Pair</button>
+        <!-- Input Section -->
+        <div class="input-section">
+            <div class="input-column">
+                <label for="keyInput">Key</label>
+                <input type="text" id="keyInput" placeholder="Enter Key">
+            </div>
+            <div class="input-column">
+                <label for="valueInput">Value</label>
+                <input type="text" id="valueInput" placeholder="Enter Value">
+            </div>
         </div>
-        <div class="output-btns">
-            <button onclick="showMapState()">Show HashMap State</button>
+        <!-- Button Row -->
+        <div class="button-row">
+            <button onclick="addKeyValuePair()">Add</button>
+            <button onclick="removeKey()">Remove</button>
+            <button onclick="getKey()">Get Value</button>
+            <button onclick="showLength()">Length</button>
+            <button onclick="showMapState()">Show All Data</button>
             <button onclick="showKeys()">Show Keys</button>
             <button onclick="showValues()">Show Values</button>
             <button onclick="showEntries()">Show Entries</button>
+            <button onclick="clearMap()">Clear All</button>
         </div>
-        <pre id="output"></pre>
+        <!-- Output Section -->
+        <div id="output"></div>
     </div>
     <script src="script.js"></script>
 </body>

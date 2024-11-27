@@ -9,11 +9,9 @@ class HashMap {
     hash(key) {
         let hashCode = 0;
         const primeNumber = 31;
-
         for (let i = 0; i < key.length; i++) {
             hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.capacity;
         }
-
         return hashCode;
     }
 
@@ -43,17 +41,11 @@ class HashMap {
         const index = this.hash(key);
         const bucket = this.buckets[index];
         if (bucket) {
-            for (let i = 0; i < bucket.length; i++) {
-                if (bucket[i][0] === key) {
-                    return bucket[i][1];
-                }
+            for (let [k, v] of bucket) {
+                if (k === key) return v;
             }
         }
         return null;
-    }
-
-    has(key) {
-        return this.get(key) !== null;
     }
 
     remove(key) {
@@ -75,100 +67,110 @@ class HashMap {
         return this.size;
     }
 
+    keys() {
+        return this.buckets.flatMap(bucket => (bucket || []).map(pair => pair[0]));
+    }
+
+    values() {
+        return this.buckets.flatMap(bucket => (bucket || []).map(pair => pair[1]));
+    }
+
+    entries() {
+        return this.buckets.flatMap(bucket => bucket || []);
+    }
+
     clear() {
         this.buckets = new Array(this.capacity);
         this.size = 0;
     }
 
-    keys() {
-        const keys = [];
-        for (let bucket of this.buckets) {
-            if (bucket) {
-                for (let pair of bucket) {
-                    keys.push(pair[0]);
-                }
-            }
-        }
-        return keys;
-    }
-
-    values() {
-        const values = [];
-        for (let bucket of this.buckets) {
-            if (bucket) {
-                for (let pair of bucket) {
-                    values.push(pair[1]);
-                }
-            }
-        }
-        return values;
-    }
-
-    entries() {
-        const entries = [];
-        for (let bucket of this.buckets) {
-            if (bucket) {
-                for (let pair of bucket) {
-                    entries.push(pair);
-                }
-            }
-        }
-        return entries;
-    }
-
     resize() {
         const newCapacity = this.capacity * 2;
-        const newMap = new HashMap(newCapacity, this.loadFactor);
-
+        const newBuckets = new Array(newCapacity);
         for (let bucket of this.buckets) {
             if (bucket) {
-                for (let pair of bucket) {
-                    newMap.set(pair[0], pair[1]);
+                for (let [key, value] of bucket) {
+                    const index = this.hash(key) % newCapacity;
+                    if (!newBuckets[index]) {
+                        newBuckets[index] = [];
+                    }
+                    newBuckets[index].push([key, value]);
                 }
             }
         }
-
         this.capacity = newCapacity;
-        this.buckets = newMap.buckets;
+        this.buckets = newBuckets;
     }
 }
 
 const testMap = new HashMap();
 
 function addKeyValuePair() {
-    const key = document.getElementById('keyInput').value;
-    const value = document.getElementById('valueInput').value;
-
+    const key = document.getElementById('keyInput').value.trim();
+    const value = document.getElementById('valueInput').value.trim();
     if (key && value) {
         testMap.set(key, value);
-        document.getElementById('keyInput').value = '';
-        document.getElementById('valueInput').value = '';
-        alert(`Added: ${key} = ${value}`);
+        updateOutput(`Added: ${key} = ${value}`);
     } else {
-        alert('Please enter both key and value');
+        updateOutput('Please enter both key and value.');
     }
+    resetInputs();
+}
+
+function removeKey() {
+    const key = document.getElementById('keyInput').value.trim();
+    if (testMap.remove(key)) {
+        updateOutput(`Removed: ${key}`);
+    } else {
+        updateOutput(`Key "${key}" not found.`);
+    }
+    resetInputs();
+}
+
+function getKey() {
+    const key = document.getElementById('keyInput').value.trim();
+    const value = testMap.get(key);
+    if (value !== null) {
+        updateOutput(`Value for "${key}": ${value}`);
+    } else {
+        updateOutput(`Key "${key}" not found.`);
+    }
+    resetInputs();
+}
+
+function showLength() {
+    updateOutput(`Length of HashMap: ${testMap.length()}`);
 }
 
 function showMapState() {
-    const output = {
-        size: testMap.length(),
-        capacity: testMap.capacity,
-        keys: testMap.keys(),
-        values: testMap.values(),
-        entries: testMap.entries()
-    };
-
-    document.getElementById('output').textContent = JSON.stringify(output, null, 2);
+    const entries = testMap.entries()
+        .map(([key, value]) => `${key}: ${value}`)
+        .join('\n');
+    updateOutput(`HashMap:\n${entries || "No data available"}`);
 }
 
 function showKeys() {
-    document.getElementById('output').textContent = JSON.stringify(testMap.keys(), null, 2);
+    updateOutput(`Keys:\n${testMap.keys().join('\n') || "No keys available"}`);
 }
 
 function showValues() {
-    document.getElementById('output').textContent = JSON.stringify(testMap.values(), null, 2);
+    updateOutput(`Values:\n${testMap.values().join('\n') || "No values available"}`);
 }
 
 function showEntries() {
-    document.getElementById('output').textContent = JSON.stringify(testMap.entries(), null, 2);
+    showMapState();
+}
+
+function clearMap() {
+    testMap.clear();
+    updateOutput('HashMap cleared.');
+}
+
+function updateOutput(content) {
+    document.getElementById('output').textContent = content;
+}
+
+function resetInputs() {
+    document.getElementById('keyInput').value = '';
+    document.getElementById('valueInput').value = '';
 }
