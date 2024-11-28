@@ -1,3 +1,4 @@
+// Node Class
 class Node {
     constructor(data) {
       this.data = data;
@@ -6,207 +7,214 @@ class Node {
     }
   }
   
+  // Tree Class
   class Tree {
-    constructor(array = []) {
-      this.root = this.buildTree(array);
+    constructor(array) {
+      const sortedArray = [...new Set(array)].sort((a, b) => a - b);
+      this.root = this.buildTree(sortedArray);
     }
   
+    // Build Tree
     buildTree(array) {
       if (array.length === 0) return null;
-      const sortedArray = [...new Set(array)].sort((a, b) => a - b);
-      return this.buildBST(sortedArray);
-    }
   
-    buildBST(array) {
-      if (array.length === 0) return null;
       const mid = Math.floor(array.length / 2);
-      const node = new Node(array[mid]);
-      node.left = this.buildBST(array.slice(0, mid));
-      node.right = this.buildBST(array.slice(mid + 1));
-      return node;
+      const root = new Node(array[mid]);
+  
+      root.left = this.buildTree(array.slice(0, mid));
+      root.right = this.buildTree(array.slice(mid + 1));
+  
+      return root;
     }
   
-    insert(value) {
-      if (this.find(value)) {
-        alert('Value already exists in the tree!');
-        return;
-      }
-      const newNode = new Node(value);
-      if (!this.root) {
-        this.root = newNode;
-        return;
-      }
-      this.insertNode(this.root, newNode);
-    }
+    // Insert
+    insert(value, node = this.root) {
+      if (!node) return new Node(value);
   
-    insertNode(node, newNode) {
-      if (newNode.data < node.data) {
-        if (node.left) {
-          this.insertNode(node.left, newNode);
-        } else {
-          node.left = newNode;
-        }
-      } else {
-        if (node.right) {
-          this.insertNode(node.right, newNode);
-        } else {
-          node.right = newNode;
-        }
-      }
-    }
-  
-    deleteItem(value) {
-      this.root = this.deleteNode(this.root, value);
-    }
-  
-    deleteNode(node, value) {
-      if (!node) return node;
       if (value < node.data) {
-        node.left = this.deleteNode(node.left, value);
+        node.left = this.insert(value, node.left);
       } else if (value > node.data) {
-        node.right = this.deleteNode(node.right, value);
+        node.right = this.insert(value, node.right);
+      }
+  
+      return node;
+    }
+  
+    // Delete
+    deleteItem(value, node = this.root) {
+      if (!node) return node;
+  
+      if (value < node.data) {
+        node.left = this.deleteItem(value, node.left);
+      } else if (value > node.data) {
+        node.right = this.deleteItem(value, node.right);
       } else {
-        if (!node.left && !node.right) {
-          return null;
-        }
-        if (!node.left) {
-          return node.right;
-        }
-        if (!node.right) {
-          return node.left;
-        }
-        node.data = this.minValue(node.right);
-        node.right = this.deleteNode(node.right, node.data);
+        if (!node.left) return node.right;
+        if (!node.right) return node.left;
+  
+        const minNode = this.findMin(node.right);
+        node.data = minNode.data;
+        node.right = this.deleteItem(minNode.data, node.right);
       }
       return node;
     }
   
-    minValue(node) {
-      let min = node.data;
+    findMin(node) {
       while (node.left) {
-        min = node.left.data;
         node = node.left;
       }
-      return min;
-    }
-  
-    find(value) {
-      return this.findNode(this.root, value);
-    }
-  
-    findNode(node, value) {
-      if (!node) return null;
-      if (value < node.data) {
-        return this.findNode(node.left, value);
-      } else if (value > node.data) {
-        return this.findNode(node.right, value);
-      }
       return node;
     }
   
+    // Find
+    find(value, node = this.root) {
+      if (!node || node.data === value) return node;
+  
+      if (value < node.data) {
+        return this.find(value, node.left);
+      } else {
+        return this.find(value, node.right);
+      }
+    }
+  
+    // Level Order
     levelOrder(callback) {
+      if (!callback) throw new Error("Callback function is required!");
+  
       const queue = [this.root];
       while (queue.length) {
-        const node = queue.shift();
+        const current = queue.shift();
+        callback(current);
+  
+        if (current.left) queue.push(current.left);
+        if (current.right) queue.push(current.right);
+      }
+    }
+  
+    // Depth-First Traversals
+    inOrder(callback, node = this.root) {
+      if (!callback) throw new Error("Callback function is required!");
+      if (node) {
+        this.inOrder(callback, node.left);
         callback(node);
-        if (node.left) queue.push(node.left);
-        if (node.right) queue.push(node.right);
+        this.inOrder(callback, node.right);
       }
     }
   
-    inOrder(callback) {
-      this.inOrderTraversal(this.root, callback);
+    preOrder(callback, node = this.root) {
+      if (!callback) throw new Error("Callback function is required!");
+      if (node) {
+        callback(node);
+        this.preOrder(callback, node.left);
+        this.preOrder(callback, node.right);
+      }
     }
   
-    inOrderTraversal(node, callback) {
+    postOrder(callback, node = this.root) {
+      if (!callback) throw new Error("Callback function is required!");
+      if (node) {
+        this.postOrder(callback, node.left);
+        this.postOrder(callback, node.right);
+        callback(node);
+      }
+    }
+  
+    // Height
+    height(node) {
+      if (!node) return -1;
+      return (
+        1 + Math.max(this.height(node.left), this.height(node.right))
+      );
+    }
+  
+    // Depth
+    depth(node, current = this.root, level = 0) {
+      if (!current) return -1;
+  
+      if (node.data === current.data) return level;
+  
+      if (node.data < current.data) {
+        return this.depth(node, current.left, level + 1);
+      } else {
+        return this.depth(node, current.right, level + 1);
+      }
+    }
+  
+    // Is Balanced
+    isBalanced(node = this.root) {
+      if (!node) return true;
+  
+      const leftHeight = this.height(node.left);
+      const rightHeight = this.height(node.right);
+  
+      return (
+        Math.abs(leftHeight - rightHeight) <= 1 &&
+        this.isBalanced(node.left) &&
+        this.isBalanced(node.right)
+      );
+    }
+  
+    // Rebalance
+    rebalance() {
+      const values = [];
+      this.inOrder(node => values.push(node.data));
+      this.root = this.buildTree(values);
+    }
+  
+    // Pretty Print
+    prettyPrint(node = this.root, prefix = "", isLeft = true) {
       if (node === null) return;
-      this.inOrderTraversal(node.left, callback);
-      callback(node);
-      this.inOrderTraversal(node.right, callback);
-    }
   
-    preOrder(callback) {
-      this.preOrderTraversal(this.root, callback);
-    }
-  
-    preOrderTraversal(node, callback) {
-      if (node === null) return;
-      callback(node);
-      this.preOrderTraversal(node.left, callback);
-      this.preOrderTraversal(node.right, callback);
-    }
-  
-    postOrder(callback) {
-      this.postOrderTraversal(this.root, callback);
-    }
-  
-    postOrderTraversal(node, callback) {
-      if (node === null) return;
-      this.postOrderTraversal(node.left, callback);
-      this.postOrderTraversal(node.right, callback);
-      callback(node);
-    }
-  
-    prettyPrint(node, prefix = "", isLeft = true) {
-      if (node === null) return "";
-      let output = "";
       if (node.right !== null) {
-        output += this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
+        this.prettyPrint(
+          node.right,
+          `${prefix}${isLeft ? "│   " : "    "}`,
+          false
+        );
       }
-      output += `${prefix}${isLeft ? "└── " : "┌── "}${node.data}\n`;
+      console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
       if (node.left !== null) {
-        output += this.prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+        this.prettyPrint(
+          node.left,
+          `${prefix}${isLeft ? "    " : "│   "}`,
+          true
+        );
       }
-      return output;
     }
   }
   
-  const tree = new Tree();
+  // Example Usage
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = new Tree(array);
   
-  function insertNode() {
-    const value = document.getElementById('insertValue').value;
-    if (value) {
-      tree.insert(Number(value));
-      updateTree();
-    }
-  }
+  console.log("Tree structure:");
+  tree.prettyPrint();
   
-  function deleteNode() {
-    const value = document.getElementById('deleteValue').value;
-    if (value) {
-      tree.deleteItem(Number(value));
-      updateTree();
-    }
-  }
+  console.log("Is balanced:", tree.isBalanced());
   
-  function levelOrderTraversal() {
-    const output = [];
-    tree.levelOrder(node => output.push(node.data));
-    document.getElementById('treeOutput').textContent = `Level Order: ${output.join(', ')}`;
-  }
+  console.log("Level Order:");
+  tree.levelOrder(node => console.log(node.data));
   
-  function inOrderTraversal() {
-    const output = [];
-    tree.inOrder(node => output.push(node.data));
-    document.getElementById('treeOutput').textContent = `In-Order: ${output.join(', ')}`;
-  }
+  console.log("Pre Order:");
+  tree.preOrder(node => console.log(node.data));
   
-  function preOrderTraversal() {
-    const output = [];
-    tree.preOrder(node => output.push(node.data));
-    document.getElementById('treeOutput').textContent = `Pre-Order: ${output.join(', ')}`;
-  }
+  console.log("Post Order:");
+  tree.postOrder(node => console.log(node.data));
   
-  function postOrderTraversal() {
-    const output = [];
-    tree.postOrder(node => output.push(node.data));
-    document.getElementById('treeOutput').textContent = `Post-Order: ${output.join(', ')}`;
-  }
+  console.log("In Order:");
+  tree.inOrder(node => console.log(node.data));
   
-  function updateTree() {
-    const treeString = tree.prettyPrint(tree.root);
-    document.getElementById('prettyPrintOutput').textContent = treeString;
-  }
+  // Unbalancing tree
+  [150, 200, 300].forEach(val => tree.insert(val));
+  console.log("Tree after unbalancing:");
+  tree.prettyPrint();
   
-  updateTree();
+  console.log("Is balanced:", tree.isBalanced());
+  
+  // Rebalancing tree
+  tree.rebalance();
+  console.log("Tree after rebalancing:");
+  tree.prettyPrint();
+  
+  console.log("Is balanced:", tree.isBalanced());
   
