@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #007BFF;
+}
+
+.input-section {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 6px;
+    margin: 5px;
+    width: 90px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+button {
+    padding: 6px 10px;
+    font-size: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 45px);
+    grid-template-rows: repeat(8, 45px);
+    gap: 2px;
+    margin: 15px auto;
+    justify-content: center;
+}
+
+.chessboard div {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+    position: relative;
+}
+
+.chessboard .white {
+    background-color: #ffffff;
+}
+
+.chessboard .black {
+    background-color: #000000;
+}
+
+.chessboard .path::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.chessboard .knight {
+    background-image: url('knight.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.result {
+    margin-top: 15px;
+    text-align: left;
+    font-size: 12px;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight's Travails</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Knight's Travails</h1>
+
+        <div class="input-section">
+            <label for="start">Start Position (e.g., 0,0):</label>
+            <input type="text" id="start" placeholder="Enter start position">
+            <label for="end">End Position (e.g., 7,7):</label>
+            <input type="text" id="end" placeholder="Enter end position">
+            <button id="findPath">Find Path</button>
+        </div>
+
+        <div class="chessboard" id="chessboard"></div>
+
+        <div class="result">
+            <h2>Result</h2>
+            <p id="pathOutput"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
