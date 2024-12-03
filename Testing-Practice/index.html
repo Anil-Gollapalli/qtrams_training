@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive JavaScript Functions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive JavaScript Functions</h1>
+
+        <!-- Capitalize Function -->
+        <div class="section">
+            <h2>Capitalize String</h2>
+            <input type="text" id="capitalize-input" placeholder="Enter string">
+            <button onclick="handleCapitalize()">Capitalize</button>
+            <p>Result: <span id="capitalize-result"></span></p>
+        </div>
+
+        <!-- Reverse String Function -->
+        <div class="section">
+            <h2>Reverse String</h2>
+            <input type="text" id="reverse-input" placeholder="Enter string">
+            <button onclick="handleReverse()">Reverse</button>
+            <p>Result: <span id="reverse-result"></span></p>
+        </div>
+
+        <!-- Calculator -->
+        <div class="section">
+            <h2>Calculator</h2>
+            <input type="number" id="calc-num1" placeholder="Enter first number">
+            <input type="number" id="calc-num2" placeholder="Enter second number">
+            <button onclick="handleAdd()">Add</button>
+            <button onclick="handleSubtract()">Subtract</button>
+            <button onclick="handleMultiply()">Multiply</button>
+            <button onclick="handleDivide()">Divide</button>
+            <p>Result: <span id="calc-result"></span></p>
+        </div>
+
+        <!-- Caesar Cipher -->
+        <div class="section">
+            <h2>Caesar Cipher</h2>
+            <input type="text" id="cipher-input" placeholder="Enter text">
+            <input type="number" id="shift-input" placeholder="Shift value">
+            <button onclick="handleCaesarCipher()">Apply Cipher</button>
+            <p>Result: <span id="cipher-result"></span></p>
+        </div>
+
+        <!-- Analyze Array -->
+        <div class="section">
+            <h2>Analyze Array</h2>
+            <input type="text" id="array-input" placeholder="Enter numbers (comma-separated)">
+            <button onclick="handleAnalyzeArray()">Analyze</button>
+            <p>Result: <span id="array-result"></span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

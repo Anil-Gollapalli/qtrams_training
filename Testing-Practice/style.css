@@ -1,0 +1,138 @@
+/* Basic reset for the page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure full height for body */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body style */
+body {
+    background-color: #f0f4f7;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    flex-direction: column;
+}
+
+/* Container holding all elements */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align elements to the top */
+    align-items: flex-start; /* Align to the left */
+    min-height: 100vh;
+    width: 100%;
+    max-width: 600px; /* Set a maximum width */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+h1 {
+    font-size: 1.6rem; /* Smaller font size */
+    text-align: left; /* Align text to the left */
+    color: #333;
+    margin-bottom: 15px; /* Reduced margin */
+}
+
+/* Section style for each block */
+.section {
+    margin-bottom: 20px; /* Reduced margin */
+}
+
+/* Title for each section */
+h2 {
+    font-size: 1.1rem; /* Slightly smaller font size */
+    color: #333;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Input fields for text and numbers */
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 8px; /* Smaller padding */
+    margin-top: 5px; /* Reduced margin */
+    margin-bottom: 8px;
+    border-radius: 6px; /* Smaller border radius */
+    border: 1px solid #ccc;
+    font-size: 0.9rem; /* Smaller font size */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input focus effect */
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Button styling */
+button {
+    padding: 8px 15px; /* Smaller button padding */
+    margin-right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px; /* Smaller border radius */
+    cursor: pointer;
+    font-size: 0.9rem; /* Smaller font size */
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Active state for buttons */
+button:active {
+    background-color: #388e3c;
+}
+
+/* Result text styling */
+p {
+    font-size: 0.9rem; /* Smaller text size */
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px; /* Reduced margin */
+    text-align: left; /* Align to the left */
+}
+
+/* Style for the result text to be more visible */
+span {
+    font-size: 1rem; /* Slightly bigger span text */
+    color: #4CAF50;
+    font-weight: 700;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.4rem; /* Smaller font size for h1 */
+    }
+
+    h2 {
+        font-size: 1rem; /* Adjusted size for h2 */
+    }
+
+    input[type="text"], input[type="number"] {
+        font-size: 0.8rem; /* Smaller font size */
+        padding: 6px;
+    }
+
+    button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
